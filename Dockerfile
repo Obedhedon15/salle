@@ -18,8 +18,7 @@ COPY . .
 # installer dépendances Laravel
 RUN composer install --no-dev --optimize-autoloader
 
-# 🔥 IMPORTANT : nettoyer cache Laravel
-RUN php artisan optimize:clear
 
-# démarrer serveur
-CMD php artisan serve --host=0.0.0.0 --port=10000
+CMD php artisan config:clear && \
+    php artisan cache:clear && \
+    php artisan serve --host=0.0.0.0 --port=10000
