@@ -4,6 +4,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
     unzip zip curl git libzip-dev \
+    libpq-dev \
     && docker-php-ext-install zip pdo pdo_mysql pdo_pgsql
 
 # Composer
