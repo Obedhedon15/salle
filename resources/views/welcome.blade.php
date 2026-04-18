@@ -96,6 +96,7 @@
         <div class="nav-links">
             <a href="/loginAgent">Connexion Agent</a>
             <a href="/loginAdmin">Connexion Admin</a>
+            <a href="/registerAdmin">Enregistrer Admin</a>
             <a href="#">À propos</a>
         </div>
         <div class="logo">
