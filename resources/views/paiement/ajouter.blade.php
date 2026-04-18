@@ -1,6 +1,6 @@
 <h1>Paiement en ligne</h1>
 
-<form method="POST" action="{{ route('paiements.handleAjouter') }}">
+<form method="POST" action="{{ route('paiements.handleAjouter') }}" enctype="multipart/form-data">
     @csrf
     <label>Nom complet</label>
     <input type="text" name="name" required><br>

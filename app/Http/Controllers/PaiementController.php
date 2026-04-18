@@ -30,11 +30,14 @@ class PaiementController extends Controller
         'facture_id' => $facture->id,
         'reference' => $reference,
         'montant' => $facture->montant_ttc,
-        'status' => 'Paye',
+        'status' => 'Pending',
         'date' => now(),
     ]);
 
-    $response = Http::withOptions(['verify' => false])->post('https://api-checkout.cinetpay.com/v2/payment', [
+    $response = Http::timeout(30)
+    ->withOptions(['verify' => false])
+    ->post('https://api-checkout.cinetpay.com/v2/payment', [
+        
         'apikey' => env('CINETPAY_API_KEY'),
         'site_id' => env('CINETPAY_SITE_ID'),
         'transaction_id' => $reference,
