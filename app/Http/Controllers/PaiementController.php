@@ -37,7 +37,7 @@ class PaiementController extends Controller
     $response = Http::timeout(30)
     ->withOptions(['verify' => false])
     ->post('https://api-checkout.cinetpay.com/v2/payment', [
-        
+
         'apikey' => env('CINETPAY_API_KEY'),
         'site_id' => env('CINETPAY_SITE_ID'),
         'transaction_id' => $reference,
@@ -54,6 +54,8 @@ class PaiementController extends Controller
 
     $data = $response->json();
 
+    dd($data);
+    
     if (isset($data['code']) && $data['code'] == '201') {
         return redirect()->away($data['data']['payment_url']);
     }
