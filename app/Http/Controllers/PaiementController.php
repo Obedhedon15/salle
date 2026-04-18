@@ -54,8 +54,8 @@ class PaiementController extends Controller
 
     $data = $response->json();
 
-    dd($data);
-    
+    dd($data['data']);
+
     if (isset($data['code']) && $data['code'] == '201') {
         return redirect()->away($data['data']['payment_url']);
     }
